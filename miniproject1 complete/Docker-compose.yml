@@ -1,0 +1,24 @@
+version: '3.9'
+services:
+  miniprojdb:
+    container_name: miniprojdb
+    image: mysql:latest
+    environment:
+      - MYSQL_DATABASE=miniproj
+      - MYSQL_MYSQL_ROOT_USER=spring
+      - MYSQL_ROOT_PASSWORD=spring
+    command: [ '--default-authentication-plugin=mysql_native_password' ]
+    ports:
+      - "3307:3306"
+  miniproj:
+    command: sh -c './wait_for_it.sh miniprojdb:3306 -- mvn spring-boot:run'
+    container_name:
+      miniproj
+#    restart: on-failure
+    build: .
+    depends_on:
+      - miniprojdb
+    environment:
+      - DB_URL=jdbc:mysql://miniprojdb:3306/miniproj
+    ports:
+      - "8088:8088"
