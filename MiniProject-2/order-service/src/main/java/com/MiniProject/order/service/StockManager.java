@@ -13,10 +13,10 @@ public class StockManager {
     @Autowired
     productRepository productRepository;
 
-    public boolean checkout(int productId, int amount){
+    public boolean checkout(int productId, int amount) {
         Optional<Product> product = productRepository.findById(productId);
         int inStore = product.get().getCount();
-        int updatedCount= inStore - amount;
+        int updatedCount = inStore - amount;
         product.get().setCount(updatedCount);
 
         productRepository.findById(productId).map(target -> {
@@ -27,16 +27,14 @@ public class StockManager {
         return true;
     }
 
-    public boolean manageStock(int productId, int amount){
-        if(productRepository.existsById(productId)){
-            if(productRepository.getById(productId).getCount()<amount){
+    public boolean manageStock(int productId, int amount) {
+        if (productRepository.existsById(productId)) {
+            if (productRepository.getById(productId).getCount() < amount) {
                 return false;
-            }else{
-                int count = productRepository.getById(productId).getCount();
-
+            } else {
+                return checkout(productId, amount);
             }
-            return checkout(productId, amount);
-        }else{
+        } else {
             return false;
         }
     }

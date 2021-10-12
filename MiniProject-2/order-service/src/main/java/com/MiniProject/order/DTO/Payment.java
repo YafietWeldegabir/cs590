@@ -1,4 +1,4 @@
-package com.MiniProject.order.VO;
+package com.MiniProject.order.DTO;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

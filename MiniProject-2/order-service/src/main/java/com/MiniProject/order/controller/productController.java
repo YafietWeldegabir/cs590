@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping(value = "/product")
+@RequestMapping(value = "/stock/product")
 public class productController {
 
     @Autowired
@@ -23,6 +23,7 @@ public class productController {
 
     @GetMapping(value = "/all")
     public List<Product> getAll(){
+
         return productRepository.findAll();
     }
 }

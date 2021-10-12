@@ -7,4 +7,6 @@ import java.util.Optional;
 
 public interface orderRepository extends JpaRepository<OrderLine, Integer> {
     Optional<OrderLine> findByUser(int userid);
+    OrderLine findTopByOrderByOrderIdDesc();
+
 }

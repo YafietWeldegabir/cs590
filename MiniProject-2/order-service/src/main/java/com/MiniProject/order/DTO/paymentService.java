@@ -1,4 +1,4 @@
-package com.MiniProject.order.VO;
+package com.MiniProject.order.DTO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ public class paymentService {
     public Payment getPayment(int userId) {
 
         Payment payment =
-                restTemplate.getForObject("localhost:9003/payment/" + userId
+                restTemplate.getForObject("http://PAYMENT-SERVICE/payment/" + userId
                         ,Payment.class);
         return  payment;
     }
