@@ -1,6 +1,8 @@
 spring:
   application:
     name: ORDER-SERVICE
+  zipkin:
+    base-url: http://127.0.0.1:9411/
   datasource:
     driverClassName: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost:3306/miniproject2
@@ -14,11 +16,3 @@ spring:
 server:
   port: 9002
 
-eureka:
-  client:
-    register-with-eureka:true: true
-    fetch-registry: true
-    service-url:
-      defaultZone: http://localhost:8761/eureka/
-    instance:
-      hostname: localhost
