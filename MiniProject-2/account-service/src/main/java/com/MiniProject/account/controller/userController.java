@@ -28,4 +28,9 @@ public class userController {
     public Optional<User> findUser(@PathVariable("id") int userid){
         return userRepository.findById(userid);
     }
+
+//    @GetMapping("/{username}")
+//    public Optional<User> findUser(@PathVariable("username") String username){
+//        return userRepository.findByusername(username);
+//    }
 }
